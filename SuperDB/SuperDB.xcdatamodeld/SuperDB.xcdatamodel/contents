@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11542" systemVersion="16B2555" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Hero" representedClassName="Hero" syncable="YES" codeGenerationType="class"/>
+    <entity name="Hero" representedClassName="Hero" syncable="YES" codeGenerationType="class">
+        <attribute name="birthday" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="name" attributeType="String" defaultValueString="Untitled Hero" indexed="YES" syncable="YES"/>
+        <attribute name="secretIdentity" attributeType="String" defaultValueString="Unknown" indexed="YES" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Hero" positionX="-63" positionY="-18" width="128" height="45"/>
+        <element name="Hero" positionX="-63" positionY="-18" width="128" height="105"/>
     </elements>
 </model>
