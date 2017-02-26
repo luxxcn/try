@@ -18,6 +18,9 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
     }
     
     let kSelectedTabDefaultsKey = "Selected Tab"
+    let entityName = "Hero"
+    let kName = "name"
+    let kSecretIdentity = "secretIdentity"
     
     var _fetchedResultsController:NSFetchedResultsController<NSFetchRequestResult>?
     var fetchedResultController:NSFetchedResultsController<NSFetchRequestResult>? {
@@ -28,7 +31,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
             
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedObjectContext = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "Hero", in: managedObjectContext)
+            let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
             let request = NSFetchRequest<NSFetchRequestResult>()
             
             request.entity = entity
@@ -41,16 +44,16 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
             }
             
             var sectionKey:String?
-            let sortDescriptor1 = NSSortDescriptor(key: "name", ascending: true)
-            let sortDescriptor2 = NSSortDescriptor(key: "secretIdentity", ascending: true)
+            let sortDescriptor1 = NSSortDescriptor(key: kName, ascending: true)
+            let sortDescriptor2 = NSSortDescriptor(key: kSecretIdentity, ascending: true)
             var sortDescriptors:Array<NSSortDescriptor>?
             switch TabType(rawValue: tabIndex!)! {
             case .kByName:
                 sortDescriptors = [sortDescriptor1, sortDescriptor2]
-                sectionKey = "name"
+                sectionKey = kName
             case .kBySecretIdentity:
                 sortDescriptors = [sortDescriptor2, sortDescriptor1]
-                sectionKey = "secretIdentity"
+                sectionKey = kSecretIdentity
             }
             request.sortDescriptors = sortDescriptors!
             
@@ -59,7 +62,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
                 NSFetchedResultsController(fetchRequest: request,
                                            managedObjectContext: managedObjectContext,
                                            sectionNameKeyPath: sectionKey,
-                                           cacheName: "Hero")
+                                           cacheName: entityName)
             _fetchedResultsController?.delegate = self
             return _fetchedResultsController
         }
@@ -152,11 +155,11 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         
         switch TabType(rawValue: tab!)! {
         case .kByName:
-            cell.textLabel?.text = aHero.value(forKey: "name") as! String?
-            cell.detailTextLabel?.text = aHero.value(forKey: "secretIdentity") as! String?
+            cell.textLabel?.text = aHero.value(forKey: kName) as! String?
+            cell.detailTextLabel?.text = aHero.value(forKey: kSecretIdentity) as! String?
         case .kBySecretIdentity:
-            cell.textLabel?.text = aHero.value(forKey: "secretIdentity") as! String?
-            cell.detailTextLabel?.text = aHero.value(forKey: "name") as! String?
+            cell.textLabel?.text = aHero.value(forKey: kSecretIdentity) as! String?
+            cell.detailTextLabel?.text = aHero.value(forKey: kName) as! String?
         }
 
         return cell
@@ -168,7 +171,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         let tabIndex = tabBar.items?.index(of: item)
         defaults.set(tabIndex, forKey: kSelectedTabDefaultsKey)
         
-        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: "Hero")
+        NSFetchedResultsController<NSFetchRequestResult>.deleteCache(withName: entityName)
         _fetchedResultsController?.delegate = nil
         _fetchedResultsController = nil
         
