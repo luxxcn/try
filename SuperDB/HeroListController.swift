@@ -9,6 +9,68 @@
 import UIKit
 import CoreData
 
+let kHeroValidationDomain = "com.xxing.SuperDB.HeroValidationDomain"
+let kHeroValidationBitrhdateCode = 1000
+let kHeroValidationNameOrSecrectIdentityCode = 1001
+
+extension Hero {
+    
+    override public func awakeFromInsert() {
+        
+        self.favoriteColor = UIColor(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
+        super.awakeFromInsert()
+    }
+    
+    func validateNameOrSecretIdentity() throws {
+        
+        if self.name?.characters.count == 0
+            && self.secretIdentity?.characters.count == 0 {
+            
+            let errorStr = NSLocalizedString("Must provide name or secret identity",
+                                             comment: "Must provide name or secret identity")
+            let userInforDict = [NSLocalizedDescriptionKey : errorStr]
+            
+            let error = NSError(domain: kHeroValidationDomain,
+                                code: kHeroValidationNameOrSecrectIdentityCode,
+                                userInfo: userInforDict)
+            throw error
+        }
+    }
+    
+    override public func validateForInsert() throws {
+        
+        try self.validateNameOrSecretIdentity()
+        
+    }
+    
+    override public func validateForUpdate() throws {
+        
+        try self.validateNameOrSecretIdentity()
+    }
+    
+    func validateBirthdate(value: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
+        
+        if value.pointee == nil {
+            return
+        }
+        
+        let date = value.pointee as? Date
+        
+        if date?.compare(Date()) == .orderedDescending {
+            
+            let errorStr = NSLocalizedString("Birthdate cannot be in the future",
+                                             comment: "Birthdate cannot be in the future")
+            let userInfoDict = [NSLocalizedDescriptionKey : errorStr]
+            
+            let error = NSError(domain: kHeroValidationDomain,
+                                code: kHeroValidationBitrhdateCode,
+                                userInfo: userInfoDict)
+            throw error
+        }
+        
+    }
+}
+
 class HeroListController:
 UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, NSFetchedResultsControllerDelegate {
     
@@ -22,8 +84,10 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
     let kName = "name"
     let kSecretIdentity = "secretIdentity"
     
-    var _fetchedResultsController:NSFetchedResultsController<NSFetchRequestResult>?
-    var fetchedResultController:NSFetchedResultsController<NSFetchRequestResult>? {
+    let heroDetailSegue = "HeroDetailSegue"
+    
+    var _fetchedResultsController:NSFetchedResultsController<Hero>?
+    var fetchedResultController:NSFetchedResultsController<Hero>? {
         get {
             if _fetchedResultsController != nil {
                 return _fetchedResultsController
@@ -32,7 +96,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let managedObjectContext = appDelegate.persistentContainer.viewContext
             let entity = NSEntityDescription.entity(forEntityName: entityName, in: managedObjectContext)
-            let request = NSFetchRequest<NSFetchRequestResult>()
+            let request = NSFetchRequest<Hero>()
             
             request.entity = entity
             request.fetchBatchSize = 20
@@ -150,16 +214,16 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         
         let cellIdentifier = "HeroListCell"
         let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath)
-        let aHero = fetchedResultController?.object(at: indexPath) as! NSManagedObject
+        let aHero = fetchedResultController?.object(at: indexPath)
         let tab = heroTabBar.items?.index(of: heroTabBar.selectedItem!)
         
         switch TabType(rawValue: tab!)! {
         case .kByName:
-            cell.textLabel?.text = aHero.value(forKey: kName) as! String?
-            cell.detailTextLabel?.text = aHero.value(forKey: kSecretIdentity) as! String?
+            cell.textLabel?.text = aHero?.value(forKey: kName) as! String?
+            cell.detailTextLabel?.text = aHero?.value(forKey: kSecretIdentity) as! String?
         case .kBySecretIdentity:
-            cell.textLabel?.text = aHero.value(forKey: kSecretIdentity) as! String?
-            cell.detailTextLabel?.text = aHero.value(forKey: kName) as! String?
+            cell.textLabel?.text = aHero?.value(forKey: kSecretIdentity) as! String?
+            cell.detailTextLabel?.text = aHero?.value(forKey: kName) as! String?
         }
 
         return cell
@@ -189,7 +253,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         
         let context = self.fetchedResultController?.managedObjectContext
         let entity = self.fetchedResultController?.fetchRequest.entity
-        NSEntityDescription.insertNewObject(forEntityName: (entity?.name)!,
+        let newHero = NSEntityDescription.insertNewObject(forEntityName: (entity?.name)!,
                                             into: context!)
         
         do {
@@ -198,6 +262,8 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
             // TODO: alert
             print(error.localizedDescription)
         }
+        
+        self.performSegue(withIdentifier: heroDetailSegue, sender: newHero)
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -205,6 +271,12 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         super.setEditing(editing, animated: animated)
         self.navigationItem.rightBarButtonItem?.isEnabled = editing
         heroTableview.setEditing(editing, animated: animated)
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectHero = fetchedResultController?.object(at: indexPath)
+        self.performSegue(withIdentifier: heroDetailSegue, sender: selectHero)
     }
     
 
@@ -223,7 +295,7 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
         
         if editingStyle == .delete {
             
-            managedObjectContext?.delete(fetchedResultController?.object(at: indexPath) as! NSManagedObject)
+            managedObjectContext?.delete((fetchedResultController?.object(at: indexPath))!)
             
             do {
                 try managedObjectContext?.save()
@@ -252,14 +324,21 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == heroDetailSegue {
+            
+            if sender is Hero {
+                
+                let detailController = segue.destination as! HeroDetailController
+                detailController.hero = sender as? Hero
+            }
+        }
     }
-    */
 
 }
