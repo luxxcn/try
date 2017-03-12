@@ -18,6 +18,9 @@
 		332A99551E744267001D9A2E /* SuperDBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A99541E744267001D9A2E /* SuperDBCell.swift */; };
 		332CC5141E6BC02600F978AE /* SuperDBDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CC5131E6BC02600F978AE /* SuperDBDateCell.swift */; };
 		332CC5161E6BD89500F978AE /* SuperDBPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */; };
+		332D79E51E752A41008F4DD7 /* CoreDataErrors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */; };
+		336082661E74D04200754B33 /* UIColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336082651E74D04200754B33 /* UIColorPicker.swift */; };
+		336082681E74DA5100754B33 /* SuperDBColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336082671E74DA5100754B33 /* SuperDBColorCell.swift */; };
 		337FBBF71E68570D00469B65 /* HeroDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FBBF61E68570D00469B65 /* HeroDetailController.swift */; };
 		337FBBF91E68593000469B65 /* HeroDetailConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */; };
 		33ABDF911E6864AC00E67C37 /* SuperDBEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */; };
@@ -59,6 +62,9 @@
 		332C0A771E7198FB005A86DB /* SuperDB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SuperDB 2.xcdatamodel"; sourceTree = "<group>"; };
 		332CC5131E6BC02600F978AE /* SuperDBDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBDateCell.swift; sourceTree = "<group>"; };
 		332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBPickerCell.swift; sourceTree = "<group>"; };
+		332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CoreDataErrors.plist; sourceTree = "<group>"; };
+		336082651E74D04200754B33 /* UIColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorPicker.swift; sourceTree = "<group>"; };
+		336082671E74DA5100754B33 /* SuperDBColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBColorCell.swift; sourceTree = "<group>"; };
 		337FBBF61E68570D00469B65 /* HeroDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailController.swift; sourceTree = "<group>"; };
 		337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeroDetailConfiguration.plist; sourceTree = "<group>"; };
 		33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBEditCell.swift; sourceTree = "<group>"; };
@@ -116,10 +122,13 @@
 				330A27D61E62B73500F858E0 /* AppDelegate.swift */,
 				330A28081E62BC4700F858E0 /* HeroListController.swift */,
 				337FBBF61E68570D00469B65 /* HeroDetailController.swift */,
+				332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */,
 				332A99541E744267001D9A2E /* SuperDBCell.swift */,
 				33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */,
 				332CC5131E6BC02600F978AE /* SuperDBDateCell.swift */,
 				332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */,
+				336082671E74DA5100754B33 /* SuperDBColorCell.swift */,
+				336082651E74D04200754B33 /* UIColorPicker.swift */,
 				337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */,
 				330A27DA1E62B73500F858E0 /* Main.storyboard */,
 				330A27E01E62B73500F858E0 /* Assets.xcassets */,
@@ -265,6 +274,7 @@
 			files = (
 				337FBBF91E68593000469B65 /* HeroDetailConfiguration.plist in Resources */,
 				330A27E41E62B73500F858E0 /* LaunchScreen.storyboard in Resources */,
+				332D79E51E752A41008F4DD7 /* CoreDataErrors.plist in Resources */,
 				330A27E11E62B73500F858E0 /* Assets.xcassets in Resources */,
 				330A27DC1E62B73500F858E0 /* Main.storyboard in Resources */,
 			);
@@ -292,8 +302,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				330A27DF1E62B73500F858E0 /* SuperDB.xcdatamodeld in Sources */,
+				336082681E74DA5100754B33 /* SuperDBColorCell.swift in Sources */,
 				332A99551E744267001D9A2E /* SuperDBCell.swift in Sources */,
 				332CC5141E6BC02600F978AE /* SuperDBDateCell.swift in Sources */,
+				336082661E74D04200754B33 /* UIColorPicker.swift in Sources */,
 				332CC5161E6BD89500F978AE /* SuperDBPickerCell.swift in Sources */,
 				33ABDF911E6864AC00E67C37 /* SuperDBEditCell.swift in Sources */,
 				330A28091E62BC4700F858E0 /* HeroListController.swift in Sources */,

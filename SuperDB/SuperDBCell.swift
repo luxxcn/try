@@ -9,6 +9,8 @@
 import UIKit
 
 class SuperDBCell: UITableViewCell {
+    
+    static var __coreDataErrors = Dictionary<String, String>()
 
     let kLabelTextColor = UIColor(red: 0.321569, green: 0.4, blue: 0.568627, alpha: 1.0)
     var label:UILabel?
@@ -32,6 +34,12 @@ class SuperDBCell: UITableViewCell {
                 }
             }
         }
+    }
+    
+    override class func initialize() {
+        
+        let plistURL = Bundle.main.url(forResource: "CoreDataErrors", withExtension: "plist")
+        __coreDataErrors = NSDictionary(contentsOf: plistURL!) as! Dictionary<String, String>
     }
     
     override func awakeFromNib() {
@@ -85,11 +93,13 @@ class SuperDBCell: UITableViewCell {
             let error = error as NSError
             if error.domain.compare("NSCocoaErrorDomain") == .orderedSame {
                 
+                let errorMessage = SuperDBCell.__coreDataErrors[String(error.code)]
+                
                 let userInfo = error.userInfo
                 message = String(format: NSLocalizedString("Validation error on: %@\rFailure Reason: %@",
                                                            comment: "Validation error on: %@\rFailure Reason: %@"),
                                  userInfo["NSValidationErrorKey"] as! CVarArg,
-                                 error.localizedFailureReason!)
+                                 errorMessage!)
             } else {
                 message = error.localizedDescription
             }
@@ -105,7 +115,7 @@ class SuperDBCell: UITableViewCell {
             })
             alert.addAction(fix)
             alert.addAction(cancel)
-            alert.show((self.window?.rootViewController)!, sender: self)
+            window?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
     
