@@ -84,7 +84,7 @@ class SuperDBCell: UITableViewCell {
     
     func validate() {
         
-        var val = self.value as AnyObject?
+        var val = self.value
         do {
             try self.hero?.validateValue(AutoreleasingUnsafeMutablePointer<AnyObject?>(&val), forKey: self.key!)
         } catch {

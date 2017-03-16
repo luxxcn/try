@@ -15,14 +15,19 @@
 		330A27EF1E62B73500F858E0 /* SuperDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A27EE1E62B73500F858E0 /* SuperDBTests.swift */; };
 		330A27FA1E62B73500F858E0 /* SuperDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A27F91E62B73500F858E0 /* SuperDBUITests.swift */; };
 		330A28091E62BC4700F858E0 /* HeroListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 330A28081E62BC4700F858E0 /* HeroListController.swift */; };
+		332049861E7ACA3600ABAD2C /* PowerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332049851E7ACA3600ABAD2C /* PowerViewController.swift */; };
+		332049881E7ACACA00ABAD2C /* PowerViewConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 332049871E7ACACA00ABAD2C /* PowerViewConfiguration.plist */; };
 		332A99551E744267001D9A2E /* SuperDBCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332A99541E744267001D9A2E /* SuperDBCell.swift */; };
+		332AC8DD1E76E2CF0091065B /* ManagedObjectConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332AC8DC1E76E2CF0091065B /* ManagedObjectConfiguration.swift */; };
 		332CC5141E6BC02600F978AE /* SuperDBDateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CC5131E6BC02600F978AE /* SuperDBDateCell.swift */; };
 		332CC5161E6BD89500F978AE /* SuperDBPickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */; };
 		332D79E51E752A41008F4DD7 /* CoreDataErrors.plist in Resources */ = {isa = PBXBuildFile; fileRef = 332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */; };
+		333085941E7AB2C0007C0B0F /* HeroDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 333085931E7AB2C0007C0B0F /* HeroDetailController.swift */; };
 		336082661E74D04200754B33 /* UIColorPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336082651E74D04200754B33 /* UIColorPicker.swift */; };
 		336082681E74DA5100754B33 /* SuperDBColorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 336082671E74DA5100754B33 /* SuperDBColorCell.swift */; };
-		337FBBF71E68570D00469B65 /* HeroDetailController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FBBF61E68570D00469B65 /* HeroDetailController.swift */; };
+		337FBBF71E68570D00469B65 /* ManagedObjectController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 337FBBF61E68570D00469B65 /* ManagedObjectController.swift */; };
 		337FBBF91E68593000469B65 /* HeroDetailConfiguration.plist in Resources */ = {isa = PBXBuildFile; fileRef = 337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */; };
+		33962E0D1E7AD1BA0046557C /* HeroReportController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33962E0C1E7AD1BA0046557C /* HeroReportController.swift */; };
 		33ABDF911E6864AC00E67C37 /* SuperDBEditCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -58,15 +63,21 @@
 		330A27F91E62B73500F858E0 /* SuperDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuperDBUITests.swift; sourceTree = "<group>"; };
 		330A27FB1E62B73500F858E0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		330A28081E62BC4700F858E0 /* HeroListController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroListController.swift; sourceTree = "<group>"; };
+		332049851E7ACA3600ABAD2C /* PowerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PowerViewController.swift; sourceTree = "<group>"; };
+		332049871E7ACACA00ABAD2C /* PowerViewConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = PowerViewConfiguration.plist; sourceTree = "<group>"; };
 		332A99541E744267001D9A2E /* SuperDBCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBCell.swift; sourceTree = "<group>"; };
+		332AC8DC1E76E2CF0091065B /* ManagedObjectConfiguration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectConfiguration.swift; sourceTree = "<group>"; };
 		332C0A771E7198FB005A86DB /* SuperDB 2.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SuperDB 2.xcdatamodel"; sourceTree = "<group>"; };
 		332CC5131E6BC02600F978AE /* SuperDBDateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBDateCell.swift; sourceTree = "<group>"; };
 		332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBPickerCell.swift; sourceTree = "<group>"; };
 		332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CoreDataErrors.plist; sourceTree = "<group>"; };
+		332D79E61E754EFA008F4DD7 /* SuperDB 3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "SuperDB 3.xcdatamodel"; sourceTree = "<group>"; };
+		333085931E7AB2C0007C0B0F /* HeroDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailController.swift; sourceTree = "<group>"; };
 		336082651E74D04200754B33 /* UIColorPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColorPicker.swift; sourceTree = "<group>"; };
 		336082671E74DA5100754B33 /* SuperDBColorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBColorCell.swift; sourceTree = "<group>"; };
-		337FBBF61E68570D00469B65 /* HeroDetailController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroDetailController.swift; sourceTree = "<group>"; };
+		337FBBF61E68570D00469B65 /* ManagedObjectController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ManagedObjectController.swift; sourceTree = "<group>"; };
 		337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = HeroDetailConfiguration.plist; sourceTree = "<group>"; };
+		33962E0C1E7AD1BA0046557C /* HeroReportController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeroReportController.swift; sourceTree = "<group>"; };
 		33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuperDBEditCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -121,7 +132,12 @@
 				330A28071E62B99900F858E0 /* resource */,
 				330A27D61E62B73500F858E0 /* AppDelegate.swift */,
 				330A28081E62BC4700F858E0 /* HeroListController.swift */,
-				337FBBF61E68570D00469B65 /* HeroDetailController.swift */,
+				333085931E7AB2C0007C0B0F /* HeroDetailController.swift */,
+				337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */,
+				332049851E7ACA3600ABAD2C /* PowerViewController.swift */,
+				332049871E7ACACA00ABAD2C /* PowerViewConfiguration.plist */,
+				337FBBF61E68570D00469B65 /* ManagedObjectController.swift */,
+				33962E0C1E7AD1BA0046557C /* HeroReportController.swift */,
 				332D79E41E752A41008F4DD7 /* CoreDataErrors.plist */,
 				332A99541E744267001D9A2E /* SuperDBCell.swift */,
 				33ABDF901E6864AC00E67C37 /* SuperDBEditCell.swift */,
@@ -129,7 +145,7 @@
 				332CC5151E6BD89500F978AE /* SuperDBPickerCell.swift */,
 				336082671E74DA5100754B33 /* SuperDBColorCell.swift */,
 				336082651E74D04200754B33 /* UIColorPicker.swift */,
-				337FBBF81E68593000469B65 /* HeroDetailConfiguration.plist */,
+				332AC8DC1E76E2CF0091065B /* ManagedObjectConfiguration.swift */,
 				330A27DA1E62B73500F858E0 /* Main.storyboard */,
 				330A27E01E62B73500F858E0 /* Assets.xcassets */,
 				330A27E21E62B73500F858E0 /* LaunchScreen.storyboard */,
@@ -272,6 +288,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				332049881E7ACACA00ABAD2C /* PowerViewConfiguration.plist in Resources */,
 				337FBBF91E68593000469B65 /* HeroDetailConfiguration.plist in Resources */,
 				330A27E41E62B73500F858E0 /* LaunchScreen.storyboard in Resources */,
 				332D79E51E752A41008F4DD7 /* CoreDataErrors.plist in Resources */,
@@ -304,13 +321,17 @@
 				330A27DF1E62B73500F858E0 /* SuperDB.xcdatamodeld in Sources */,
 				336082681E74DA5100754B33 /* SuperDBColorCell.swift in Sources */,
 				332A99551E744267001D9A2E /* SuperDBCell.swift in Sources */,
+				333085941E7AB2C0007C0B0F /* HeroDetailController.swift in Sources */,
 				332CC5141E6BC02600F978AE /* SuperDBDateCell.swift in Sources */,
 				336082661E74D04200754B33 /* UIColorPicker.swift in Sources */,
 				332CC5161E6BD89500F978AE /* SuperDBPickerCell.swift in Sources */,
 				33ABDF911E6864AC00E67C37 /* SuperDBEditCell.swift in Sources */,
 				330A28091E62BC4700F858E0 /* HeroListController.swift in Sources */,
-				337FBBF71E68570D00469B65 /* HeroDetailController.swift in Sources */,
+				332AC8DD1E76E2CF0091065B /* ManagedObjectConfiguration.swift in Sources */,
+				337FBBF71E68570D00469B65 /* ManagedObjectController.swift in Sources */,
 				330A27D71E62B73500F858E0 /* AppDelegate.swift in Sources */,
+				332049861E7ACA3600ABAD2C /* PowerViewController.swift in Sources */,
+				33962E0D1E7AD1BA0046557C /* HeroReportController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,10 +604,11 @@
 		330A27DD1E62B73500F858E0 /* SuperDB.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				332D79E61E754EFA008F4DD7 /* SuperDB 3.xcdatamodel */,
 				332C0A771E7198FB005A86DB /* SuperDB 2.xcdatamodel */,
 				330A27DE1E62B73500F858E0 /* SuperDB.xcdatamodel */,
 			);
-			currentVersion = 332C0A771E7198FB005A86DB /* SuperDB 2.xcdatamodel */;
+			currentVersion = 332D79E61E754EFA008F4DD7 /* SuperDB 3.xcdatamodel */;
 			path = SuperDB.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="11759" systemVersion="16E144f" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Hero" representedClassName="Hero" syncable="YES" codeGenerationType="class">
+        <attribute name="age" transient="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="favoriteColor" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" attributeType="String" minValueString="1" defaultValueString="Untitled Hero" indexed="YES" syncable="YES"/>
+        <attribute name="secretIdentity" attributeType="String" defaultValueString="Unknown" indexed="YES" syncable="YES"/>
+        <attribute name="sex" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="powers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Power" inverseName="hero" inverseEntity="Power" syncable="YES"/>
+        <fetchedProperty name="olderHeroes" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.birthdate &gt; birthdate"/>
+        </fetchedProperty>
+        <fetchedProperty name="oppositeSexHeroes" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.sex != sex"/>
+        </fetchedProperty>
+        <fetchedProperty name="sameSexHeroes" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="($FETCH_SOURCE.sex = sex) AND ($FETCH_SOURCE != SELF)"/>
+        </fetchedProperty>
+        <fetchedProperty name="youngerHeroes" optional="YES" syncable="YES">
+            <fetchRequest name="fetchedPropertyFetchRequest" entity="Hero" predicateString="$FETCH_SOURCE.birthdate &lt; birthdate"/>
+        </fetchedProperty>
+    </entity>
+    <entity name="Power" representedClassName="Power" syncable="YES" codeGenerationType="class">
+        <attribute name="name" attributeType="String" defaultValueString="New Power" syncable="YES"/>
+        <attribute name="source" attributeType="String" syncable="YES"/>
+        <relationship name="hero" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Hero" inverseName="powers" inverseEntity="Hero" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Hero" positionX="-63" positionY="-18" width="128" height="224"/>
+        <element name="Power" positionX="126" positionY="18" width="128" height="88"/>
+    </elements>
+</model>

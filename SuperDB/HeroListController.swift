@@ -40,7 +40,6 @@ extension Hero {
     override public func validateForInsert() throws {
         
         try self.validateNameOrSecretIdentity()
-        
     }
     
     override public func validateForUpdate() throws {
@@ -48,6 +47,7 @@ extension Hero {
         try self.validateNameOrSecretIdentity()
     }
     
+    // TODO: 好像不能触发？
     func validateBirthdate(value: AutoreleasingUnsafeMutablePointer<AnyObject?>) throws {
         
         if value.pointee == nil {
@@ -335,8 +335,8 @@ UIViewController, UITableViewDataSource, UITableViewDelegate, UITabBarDelegate, 
             
             if sender is Hero {
                 
-                let detailController = segue.destination as! HeroDetailController
-                detailController.hero = sender as? Hero
+                let detailController = segue.destination as! ManagedObjectController
+                detailController.managedObject = sender as? NSManagedObject
             }
         }
     }
